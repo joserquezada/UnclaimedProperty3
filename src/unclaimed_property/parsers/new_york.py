@@ -21,7 +21,7 @@ def parse_property(record: dict[str, Any]) -> PropertyRecord:
         postal_code=record.get("postalCode"),
         property_type=record.get("propertyTypeDescription"),
         property_type_code=record.get("propertyTypeCD"),
-        property_value=0.0,  # We'll revisit this after we inspect NY further
+        property_value=None,
         report_year=record.get("reportYear"),
         uuid=record.get("uuid"),
     )

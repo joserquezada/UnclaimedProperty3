@@ -23,7 +23,7 @@ class PropertyRecord:
 
     property_type_code: str
 
-    property_value: float
+    property_value: float | None
 
     report_year: str
 

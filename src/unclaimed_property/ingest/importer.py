@@ -14,19 +14,20 @@ def load_json_file(file_path: Path) -> dict:
 
 
 def main() -> None:
-    if len(sys.argv) != 3:
-        print("Usage: python -m src.unclaimed_property.ingest.importer <input-json> <output-csv>")
+    if len(sys.argv) != 4:
+        print("Usage: python -m src.unclaimed_property.ingest.importer <state> <input-json> <output-csv>")
         sys.exit(1)
 
-    input_path = Path(sys.argv[1])
-    output_path = Path(sys.argv[2])
+    state_code = sys.argv[1]
+    input_path = Path(sys.argv[2])
+    output_path = Path(sys.argv[3])
 
     if not input_path.exists():
         print(f"File not found: {input_path}")
         sys.exit(1)
 
     data = load_json_file(input_path)
-    parser = get_parser("NY")
+    parser = get_parser(state_code)
     records = parser(data)
 
     invalid_count = 0

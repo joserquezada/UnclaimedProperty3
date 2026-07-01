@@ -22,7 +22,6 @@ def main() -> None:
     if not results:
         print("No matching records found.")
         return
-
     for (
         source_state,
         owner_name,
@@ -33,10 +32,14 @@ def main() -> None:
         property_count,
         total_value,
     ) in results:
+        if total_value is None:
+            value_text = "Unknown"
+        else:
+            value_text = f"${total_value:,.2f}"
         print(
             f"{source_state} | {owner_name} | "
             f"{address}, {city}, {state} {postal_code} | "
-            f"{property_count} properties | ${total_value:,.2f}"
+            f"{property_count} properties | {value_text}"
         )
 
 
