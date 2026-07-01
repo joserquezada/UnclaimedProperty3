@@ -52,6 +52,8 @@ def main() -> None:
 
     print(repo.get_first_property())
     
+    print()
+    
     
 
 
