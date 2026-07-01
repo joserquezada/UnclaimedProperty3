@@ -23,9 +23,19 @@ def main() -> None:
         print("No matching records found.")
         return
 
-    for source_state, owner_name, property_count, total_value in results:
+    for (
+        source_state,
+        owner_name,
+        address,
+        city,
+        state,
+        postal_code,
+        property_count,
+        total_value,
+    ) in results:
         print(
             f"{source_state} | {owner_name} | "
+            f"{address}, {city}, {state} {postal_code} | "
             f"{property_count} properties | ${total_value:,.2f}"
         )
 

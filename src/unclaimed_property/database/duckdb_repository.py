@@ -121,11 +121,21 @@ class DuckDBRepository:
                 SELECT
                     source_state,
                     owner_name,
+                    address,
+                    city,
+                    state,
+                    postal_code,
                     COUNT(*) AS property_count,
                     SUM(property_value) AS total_value
                 FROM properties
                 WHERE UPPER(owner_name) LIKE ?
-                GROUP BY source_state, owner_name
+                GROUP BY
+                    source_state,
+                    owner_name,
+                    address,
+                    city,
+                    state,
+                    postal_code
                 ORDER BY total_value DESC
                 """,
                 [pattern],
