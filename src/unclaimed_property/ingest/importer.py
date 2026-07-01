@@ -2,8 +2,10 @@ import json
 import sys
 from pathlib import Path
 
-from src.unclaimed_property.parsers.texas import parse_response
+from src.unclaimed_property.parsers.registry import get_parser
 from src.unclaimed_property.export.csv_exporter import write_records_to_csv
+from src.unclaimed_property.validation.property_validator import validate_record
+from src.unclaimed_property.database.duckdb_repository import DuckDBRepository
 
 
 def load_json_file(file_path: Path) -> dict:
@@ -24,11 +26,23 @@ def main() -> None:
         sys.exit(1)
 
     data = load_json_file(input_path)
-    records = parse_response(data)
+    parser = get_parser("TX")
+    records = parser(data)
+
+    invalid_count = 0
+    for record in records:
+        errors = validate_record(record)
+        if errors:
+            invalid_count += 1
 
     print("Parsed records:", len(records))
-
+    print("Invalid records:", invalid_count)
     write_records_to_csv(records, output_path)
+    repo = DuckDBRepository(Path("data/database/unclaimed_property.duckdb"))
+    repo.initialize()
+    repo.save_properties(records)
+    
+    
 
 
 if __name__ == "__main__":
