@@ -2,13 +2,15 @@ from typing import Any, Callable
 
 from src.unclaimed_property.models.property_record import PropertyRecord
 from src.unclaimed_property.parsers.texas import parse_response as parse_texas_response
+from src.unclaimed_property.parsers.new_york import parse_response as parse_new_york_response
 
 
 ParserFunction = Callable[[dict[str, Any]], list[PropertyRecord]]
 
 
-PARSERS: dict[str, ParserFunction] = {
+PARSERS = {
     "TX": parse_texas_response,
+    "NY": parse_new_york_response,
 }
 
 

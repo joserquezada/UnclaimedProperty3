@@ -26,7 +26,7 @@ def main() -> None:
         sys.exit(1)
 
     data = load_json_file(input_path)
-    parser = get_parser("TX")
+    parser = get_parser("NY")
     records = parser(data)
 
     invalid_count = 0
