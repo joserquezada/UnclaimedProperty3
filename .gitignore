@@ -1,0 +1,76 @@
+# ==========================================
+# Python
+# ==========================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution
+build/
+dist/
+*.egg-info/
+
+# ==========================================
+# IDEs
+# ==========================================
+
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# Python testing / coverage
+# ==========================================
+
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# ==========================================
+# Generated data
+# ==========================================
+
+# Processed exports
+data/processed/
+
+# DuckDB database
+data/database/
+
+# Raw captures
+# Uncomment if you don't want to commit captured JSON
+# data/raw/
+
+# CSV exports
+*.csv
+
+# Excel exports
+*.xlsx
+*.xls
+
+# ==========================================
+# Logs
+# ==========================================
+
+*.log
+
+# ==========================================
+# Temporary files
+# ==========================================
+
+*.tmp
+*.bak
+*.swp

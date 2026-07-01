@@ -9,11 +9,16 @@ def parse_property(record: dict[str, Any]) -> PropertyRecord:
 
     if second_owner.strip():
         owner_name = f"{owner_name} / {second_owner}"
-    property_value=record.get("propertyValueDescription")
-    try:
-        propertyClean = property_value.replace("$", "").replace(",", "") 
-        property_value = float(propertyClean)
-    except ValueError as e:
+    property_value_text = record.get("propertyValueDescription")
+
+    if property_value_text:
+        try:
+            property_value = float(
+                property_value_text.replace("$", "").replace(",", "")
+            )
+        except ValueError:
+            property_value = None
+    else:
         property_value = None
         
 
