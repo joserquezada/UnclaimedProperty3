@@ -25,7 +25,8 @@ def main() -> None:
     records = parse_response(data)
 
     print("Parsed records:", len(records))
-    print(records[0])
+    for record in records[:5]:
+        print(record)
 
 
 if __name__ == "__main__":
