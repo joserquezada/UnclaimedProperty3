@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Unclaimed Property Capture",
+  "version": "0.1.0",
+  "description": "Captures unclaimed property search responses.",
+
+  "permissions": [
+    "storage",
+    "downloads",
+    "tabs"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
