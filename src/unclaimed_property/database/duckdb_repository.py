@@ -38,32 +38,76 @@ class DuckDBRepository:
             print("No records to save.")
             return
 
-        rows = [
-            tuple(asdict(record).values())
-            for record in records
-        ]
+        inserted_count = 0
 
         with duckdb.connect(str(self.database_path)) as conn:
-            conn.executemany(
-                """
-                INSERT INTO properties (
-                    source_state,
-                    property_id,
-                    owner_name,
-                    holder_name,
-                    address,
-                    city,
-                    state,
-                    postal_code,
-                    property_type,
-                    property_type_code,
-                    property_value,
-                    report_year,
-                    uuid
-                )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """,
-                rows,
-            )
+            for record in records:
+                values = tuple(asdict(record).values())
 
-        print(f"Saved {len(records)} records to DuckDB.")
+                exists = conn.execute(
+                    """
+                    SELECT COUNT(*)
+                    FROM properties
+                    WHERE source_state = ?
+                    AND property_id = ?
+                    AND owner_name = ?
+                    AND holder_name = ?
+                    AND address = ?
+                    AND city = ?
+                    AND state = ?
+                    AND postal_code = ?
+                    AND property_type = ?
+                    AND property_type_code = ?
+                    AND property_value = ?
+                    AND report_year = ?
+                    AND uuid = ?
+                    """,
+                    values,
+                ).fetchone()[0]
+
+                if exists == 0:
+                    conn.execute(
+                        """
+                        INSERT INTO properties (
+                            source_state,
+                            property_id,
+                            owner_name,
+                            holder_name,
+                            address,
+                            city,
+                            state,
+                            postal_code,
+                            property_type,
+                            property_type_code,
+                            property_value,
+                            report_year,
+                            uuid
+                        )
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """,
+                        values,
+                    )
+                    inserted_count += 1
+
+        print(f"Inserted {inserted_count} new records into DuckDB.")
+
+    def count_properties(self) -> int:
+        with duckdb.connect(str(self.database_path)) as conn:
+            result = conn.execute(
+                """
+                SELECT COUNT(*)
+                FROM properties
+                """
+            ).fetchone()
+
+        return result[0]
+    
+    def get_first_property(self):
+        with duckdb.connect(str(self.database_path)) as conn:
+            return conn.execute(
+                """
+                SELECT *
+                FROM properties
+                LIMIT 1
+                """
+            ).fetchone()

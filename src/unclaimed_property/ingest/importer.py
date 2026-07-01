@@ -41,6 +41,16 @@ def main() -> None:
     repo = DuckDBRepository(Path("data/database/unclaimed_property.duckdb"))
     repo.initialize()
     repo.save_properties(records)
+    print()
+
+    print("DuckDB Verification")
+    print("-------------------")
+
+    print("Property Count:", repo.count_properties())
+
+    print()
+
+    print(repo.get_first_property())
     
     
 
