@@ -27,5 +27,8 @@
     "resources": ["injected.js"],
     "matches": ["<all_urls>"]
   }
-]
+],
+"action": {
+    "default_popup": "popup.html"
+  }
 }
