@@ -1,24 +1,31 @@
 {
   "manifest_version": 3,
-  "name": "Unclaimed Property Capture",
-  "version": "0.1.0",
-  "description": "Captures unclaimed property search responses.",
-
-  "permissions": [
-    "storage",
-    "downloads",
-    "tabs"
-  ],
-
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "name": "Unclaimed Property JSON Collector",
+  "version": "0.2.0",
+  "description": "Captures unclaimed property JSON responses after manual searches.",
 
   "background": {
     "service_worker": "background.js"
   },
+  "permissions": [
+    "downloads",
+    "storage"
+  ],
 
-  "action": {
-    "default_popup": "popup.html"
+"host_permissions": [
+  "<all_urls>"
+],
+"content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_start"
   }
+],
+"web_accessible_resources": [
+  {
+    "resources": ["injected.js"],
+    "matches": ["<all_urls>"]
+  }
+]
 }

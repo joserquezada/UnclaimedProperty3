@@ -1,1 +1,1 @@
-console.log("Popup opened.");
+console.log("Collector popup opened.");
