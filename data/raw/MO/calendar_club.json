@@ -1,0 +1,49 @@
+{
+  "properties": [
+    {
+      "propertyID": 18815501,
+      "holderName": null,
+      "ownerName": "CALENDAR CLUB MIDWEST",
+      "secondOwnerName": "",
+      "address1": "1535 WALNUT ST APT 705",
+      "city": "KANSAS CITY",
+      "state": "MO",
+      "postalCode": "64108-1354",
+      "propertyTypeDescription": null,
+      "propertyTypeCD": null,
+      "propertyValue": 36.00,
+      "reportYear": null,
+      "uuid": null
+    },
+    {
+      "propertyID": 11109318,
+      "holderName": null,
+      "ownerName": "CALENDAR CLUBGAMEKEEPER",
+      "secondOwnerName": "",
+      "address1": "7004 SPRING VALLEY RD",
+      "city": "BELTON",
+      "state": "MO",
+      "postalCode": "64019-0000",
+      "propertyTypeDescription": null,
+      "propertyTypeCD": null,
+      "propertyValue": 42.69,
+      "reportYear": null,
+      "uuid": null
+    },
+    {
+      "propertyID": 15478047,
+      "holderName": null,
+      "ownerName": "OFFICIAL AMERICAN BEARD CLUB CALENDAR",
+      "secondOwnerName": "",
+      "address1": "739 LAKEVIEW RIDGE DR",
+      "city": "FENTON",
+      "state": "MO",
+      "postalCode": "63026",
+      "propertyTypeDescription": null,
+      "propertyTypeCD": null,
+      "propertyValue": 0.10,
+      "reportYear": null,
+      "uuid": null
+    }
+  ]
+}

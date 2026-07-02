@@ -4,6 +4,7 @@ from src.unclaimed_property.models.property_record import PropertyRecord
 from src.unclaimed_property.parsers.texas import parse_response as parse_texas_response
 from src.unclaimed_property.parsers.new_york import parse_response as parse_new_york_response
 from src.unclaimed_property.parsers.california import parse_response as parse_california_response
+from src.unclaimed_property.parsers.florida import parse_response as parse_florida_response
 
 
 ParserFunction = Callable[[dict[str, Any]], list[PropertyRecord]]
@@ -12,7 +13,8 @@ ParserFunction = Callable[[dict[str, Any]], list[PropertyRecord]]
 PARSERS = {
     "TX": parse_texas_response,
     "NY": parse_new_york_response,
-    "CA": parse_california_response
+    "CA": parse_california_response,
+    "FL": parse_florida_response
 }
 
 

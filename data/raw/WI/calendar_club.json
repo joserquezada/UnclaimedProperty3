@@ -1,0 +1,21 @@
+{
+  "properties": [
+    {
+      "propertyID": 1482109,
+      "holderName": "WE ENERGIES",
+      "ownerName": "CALENDAR CLUB",
+      "secondOwnerName": "",
+      "address1": "7700 120TH AVE 1",
+      "city": "KENOSHA",
+      "state": "WI",
+      "postalCode": null,
+      "propertyTypeDescription": null,
+      "propertyTypeCD": null,
+      "propertyValueDescription": "$100 - $1,000",
+      "propertyValue": null,
+      "reportYear": "2010",
+      "ownerRelationship": "Sole Owner",
+      "uuid": null
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "properties": [
+    {
+      "propertyID": 23569905,
+      "holderName": "COMCAST CABLE COMM MGMT LLC",
+      "ownerName": "CALENDAR CLUB",
+      "secondOwnerName": "",
+      "address1": "22 COLONIAL RD STE 26",
+      "city": "HARRISBURG",
+      "state": "PA",
+      "postalCode": "17109",
+      "propertyTypeDescription": "REFUNDS / REBATES",
+      "propertyTypeCD": null,
+      "propertyValueDescription": "Under 100",
+      "propertyValue": null,
+      "reportYear": null,
+      "uuid": null
+    },
+    {
+      "propertyID": 27543842,
+      "holderName": "COUNTY OF LEHIGH PENNSYLVANIA",
+      "ownerName": "CALENDAR CLUB",
+      "secondOwnerName": "",
+      "address1": "2985 CENTER VALLEY PARKWAY #210",
+      "city": "CENTER VALLEY",
+      "state": "PA",
+      "postalCode": "18034",
+      "propertyTypeDescription": "ACCOUNTS PAYABLE CHECK",
+      "propertyTypeCD": null,
+      "propertyValueDescription": "Under 100",
+      "propertyValue": null,
+      "reportYear": null,
+      "uuid": null
+    },
+    {
+      "propertyID": 33164129,
+      "holderName": "COUNTY OF LEHIGH PENNSYLVANIA",
+      "ownerName": "CALENDAR CLUB",
+      "secondOwnerName": "",
+      "address1": "2985 CENTER VALLEY PKWY #210",
+      "city": "CENTER VALLEY",
+      "state": "PA",
+      "postalCode": "18034",
+      "propertyTypeDescription": "ACCOUNTS PAYABLE CHECK",
+      "propertyTypeCD": null,
+      "propertyValueDescription": "Under 100",
+      "propertyValue": null,
+      "reportYear": null,
+      "uuid": null
+    },
+    {
+      "propertyID": 11695634,
+      "holderName": "SPRINT UNITED MANAGEMENT COMPANY",
+      "ownerName": "CALENDAR CLUB AND SRV LLC",
+      "secondOwnerName": "",
+      "address1": "UNIT 120, 800 E HIGH ST",
+      "city": "CARLISLE",
+      "state": "PA",
+      "postalCode": "17013-266",
+      "propertyTypeDescription": "UTILITY REFUND / DEPOSIT",
+      "propertyTypeCD": null,
+      "propertyValueDescription": "Over 100",
+      "propertyValue": null,
+      "reportYear": null,
+      "uuid": null
+    }
+  ]
+}

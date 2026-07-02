@@ -1,0 +1,33 @@
+{
+    "properties": [
+        {
+            "OwnrId": 27997368,
+            "PrsnSfxCd": null,
+            "PrtyNm": "CALENDAR CLUB 2404",
+            "PrtyUperNm": "CALENDAR CLUB 2404",
+            "PrsnFrstNm": null,
+            "PrsnMidNm": null,
+            "ReportedOwner": "CALENDAR CLUB 2404",
+            "AccNbr": null,
+            "TxidTypeCd": "B",
+            "PrtyTaxId": null,
+            "PropId": 108188732,
+            "NarlCd": "PM",
+            "CityNm": "TAMPA",
+            "StCd": "FL",
+            "CtryCd": null,
+            "PrclCd": "CASH",
+            "AddrDsc": "OLD HYDE PARK MALL\nTAMPA FL 33606",
+            "AddrLne2Dsc": "SWANN AND DAKOTA AVE",
+            "AddrLne3Dsc": null,
+            "ZoneUsaPstlCd": "33606",
+            "MailingAddress": null,
+            "PrtyRptNm": "AMERICAN EXPRESS COMPANY",
+            "PrclTypeDsc": "ACCOUNTS PAYABLE",
+            "StatCd": "CLMB",
+            "PropAmt": 74.64,
+            "PropQty": 0,
+            "NumRows": 1
+        }
+    ]
+}

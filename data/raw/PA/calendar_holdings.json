@@ -1,0 +1,20 @@
+{
+  "properties": [
+    {
+      "propertyID": 44427071,
+      "holderName": "MONTGOMERY COUNTY CONTROLLER",
+      "ownerName": "CALENDAR HOLDINGS SRV LLC",
+      "secondOwnerName": "",
+      "address1": "6411 BURLESON ROAD",
+      "city": "AUSTIN",
+      "state": "TX",
+      "postalCode": "78744",
+      "propertyTypeDescription": "OTHER COURT DEPOSITS",
+      "propertyTypeCD": null,
+      "propertyValueDescription": "Over 100",
+      "propertyValue": null,
+      "reportYear": null,
+      "uuid": null
+    }
+  ]
+}
