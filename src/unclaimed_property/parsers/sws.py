@@ -2,23 +2,24 @@ from typing import Any
 
 from src.unclaimed_property.models.property_record import PropertyRecord
 
-def parse_property_value(record: dict) -> float | None:
-    value = record.get("propertyValue")
 
-    if isinstance(value, (int, float)):
-        return float(value)
+def parse_value_fields(record: dict[str, Any]) -> tuple[float | None, str | None]:
+    raw_value = record.get("propertyValue")
+    value_description = record.get("propertyValueDescription")
 
-    text = record.get("propertyValueDescription")
+    if isinstance(raw_value, (int, float)):
+        return float(raw_value), value_description
 
-    if not text:
-        return None
+    if not value_description:
+        return None, None
 
-    clean = str(text).replace("$", "").replace(",", "").strip()
+    clean = str(value_description).replace("$", "").replace(",", "").strip()
 
     try:
-        return float(clean)
+        return float(clean), str(value_description)
     except ValueError:
-        return None
+        return None, str(value_description)
+
 
 def build_sws_parser(source_state: str):
     def parse_property(record: dict[str, Any]) -> PropertyRecord:
@@ -27,6 +28,8 @@ def build_sws_parser(source_state: str):
 
         if second_owner:
             owner_name = f"{owner_name} / {second_owner}"
+
+        property_value, property_value_description = parse_value_fields(record)
 
         return PropertyRecord(
             source_state=source_state,
@@ -39,7 +42,8 @@ def build_sws_parser(source_state: str):
             postal_code=record.get("postalCode"),
             property_type=record.get("propertyTypeDescription"),
             property_type_code=record.get("propertyTypeCD"),
-            property_value=parse_property_value(record),
+            property_value=property_value,
+            property_value_description=property_value_description,
             report_year=record.get("reportYear"),
             uuid=record.get("uuid"),
         )

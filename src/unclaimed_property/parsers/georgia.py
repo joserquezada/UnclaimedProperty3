@@ -16,6 +16,7 @@ def parse_property(record: dict[str, Any]) -> PropertyRecord:
         property_type=None,
         property_type_code=None,
         property_value=None,
+        property_value_description=record.get("PropAmt"),
         report_year=None,
         uuid=None,
     )
