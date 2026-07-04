@@ -24,6 +24,8 @@ class PropertyRecord:
     property_type_code: str
 
     property_value: float | None
+    
+    property_value_description: str | None
 
     report_year: str
 

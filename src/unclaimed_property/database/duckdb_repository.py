@@ -1,4 +1,3 @@
-from dataclasses import asdict
 from pathlib import Path
 
 import duckdb
@@ -27,9 +26,17 @@ class DuckDBRepository:
                     property_type VARCHAR,
                     property_type_code VARCHAR,
                     property_value DOUBLE,
+                    property_value_description VARCHAR,
                     report_year VARCHAR,
                     uuid VARCHAR
                 )
+                """
+            )
+
+            conn.execute(
+                """
+                ALTER TABLE properties
+                ADD COLUMN IF NOT EXISTS property_value_description VARCHAR
                 """
             )
 
@@ -42,25 +49,41 @@ class DuckDBRepository:
 
         with duckdb.connect(str(self.database_path)) as conn:
             for record in records:
-                values = tuple(asdict(record).values())
+                values = (
+                    record.source_state,
+                    record.property_id,
+                    record.owner_name,
+                    record.holder_name,
+                    record.address,
+                    record.city,
+                    record.state,
+                    record.postal_code,
+                    record.property_type,
+                    record.property_type_code,
+                    record.property_value,
+                    record.property_value_description,
+                    record.report_year,
+                    record.uuid,
+                )
 
                 exists = conn.execute(
                     """
                     SELECT COUNT(*)
                     FROM properties
-                    WHERE source_state = ?
-                    AND property_id = ?
-                    AND owner_name = ?
-                    AND holder_name = ?
-                    AND address = ?
-                    AND city = ?
-                    AND state = ?
-                    AND postal_code = ?
-                    AND property_type = ?
-                    AND property_type_code = ?
-                    AND property_value = ?
-                    AND report_year = ?
-                    AND uuid = ?
+                    WHERE source_state IS NOT DISTINCT FROM ?
+                    AND property_id IS NOT DISTINCT FROM ?
+                    AND owner_name IS NOT DISTINCT FROM ?
+                    AND holder_name IS NOT DISTINCT FROM ?
+                    AND address IS NOT DISTINCT FROM ?
+                    AND city IS NOT DISTINCT FROM ?
+                    AND state IS NOT DISTINCT FROM ?
+                    AND postal_code IS NOT DISTINCT FROM ?
+                    AND property_type IS NOT DISTINCT FROM ?
+                    AND property_type_code IS NOT DISTINCT FROM ?
+                    AND property_value IS NOT DISTINCT FROM ?
+                    AND property_value_description IS NOT DISTINCT FROM ?
+                    AND report_year IS NOT DISTINCT FROM ?
+                    AND uuid IS NOT DISTINCT FROM ?
                     """,
                     values,
                 ).fetchone()[0]
@@ -80,10 +103,11 @@ class DuckDBRepository:
                             property_type,
                             property_type_code,
                             property_value,
+                            property_value_description,
                             report_year,
                             uuid
                         )
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                         """,
                         values,
                     )
@@ -126,7 +150,9 @@ class DuckDBRepository:
                     state,
                     postal_code,
                     COUNT(*) AS property_count,
-                    SUM(property_value) AS total_value
+                    SUM(property_value) AS total_value,
+                    COUNT(*) FILTER (WHERE property_value IS NULL AND property_value_description IS NOT NULL) AS described_value_count,
+                    COUNT(*) FILTER (WHERE property_value IS NULL AND property_value_description IS NULL) AS unknown_value_count
                 FROM properties
                 WHERE UPPER(owner_name) LIKE ?
                 GROUP BY
