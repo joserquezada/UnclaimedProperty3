@@ -29,6 +29,12 @@ from src.unclaimed_property.parsers.massachusetts import parse_response as parse
 from src.unclaimed_property.parsers.michigan import parse_response as parse_michigan_response
 from src.unclaimed_property.parsers.minnesota import parse_response as parse_minnesota_response
 from src.unclaimed_property.parsers.mississippi import parse_response as parse_mississippi_response
+from src.unclaimed_property.parsers.nebraska import parse_response as parse_nebraska_response
+from src.unclaimed_property.parsers.nevada import parse_response as parse_nevada_response
+from src.unclaimed_property.parsers.new_hampshire import parse_response as parse_new_hampshire_response
+from src.unclaimed_property.parsers.new_jersey import parse_response as parse_new_jersey_response
+from src.unclaimed_property.parsers.north_carolina import parse_response as parse_north_carolina_response
+from src.unclaimed_property.parsers.north_dakota import parse_response as parse_north_dakota_response
 
 
 
