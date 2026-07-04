@@ -9,6 +9,10 @@ from src.unclaimed_property.parsers.pennsylvania import parse_response as parse_
 from src.unclaimed_property.parsers.vermont import parse_response as parse_vermont_response
 from src.unclaimed_property.parsers.wisconsin import parse_response as parse_wisconsin_response
 from src.unclaimed_property.parsers.missouri import parse_response as parse_missouri_response
+from src.unclaimed_property.parsers.alaska import parse_response as parse_alaska_response
+from src.unclaimed_property.parsers.alabama import parse_response as parse_alabama_response
+from src.unclaimed_property.parsers.arkansas import parse_response as parse_arkansas_response
+from src.unclaimed_property.parsers.arizona import parse_response as parse_arizona_response
 
 
 ParserFunction = Callable[[dict[str, Any]], list[PropertyRecord]]
@@ -22,7 +26,11 @@ PARSERS = {
     "PA": parse_pennsylvania_response,
     "VT": parse_vermont_response,
     "WI": parse_wisconsin_response,
-    "MO": parse_missouri_response
+    "MO": parse_missouri_response,
+    "AK": parse_alaska_response,
+    "AL": parse_alabama_response,
+    "AR": parse_arkansas_response,
+    "AZ": parse_arizona_response
 }
 
 
