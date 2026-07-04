@@ -11,13 +11,13 @@ def parse_property(record: dict[str, Any]) -> PropertyRecord:
         owner_name = f"{owner_name} / {second_owner}"
 
     return PropertyRecord(
-        source_state="AL",
+        source_state="IN",
         property_id=record.get("propertyID"),
         owner_name=owner_name,
         holder_name=record.get("holderName"),
         address=record.get("address1"),
         city=record.get("city"),
-        state=record.get("state") or "AL",
+        state=record.get("state") or "IN",
         postal_code=record.get("postalCode"),
         property_type=record.get("propertyTypeDescription"),
         property_type_code=record.get("propertyTypeCD"),

@@ -17,7 +17,7 @@ def parse_property(record: dict[str, Any]) -> PropertyRecord:
         holder_name=record.get("holderName"),
         address=record.get("address1"),
         city=record.get("city"),
-        state=record.get("state") or "AK",
+        state=record.get("state") or "AZ",
         postal_code=record.get("postalCode"),
         property_type=record.get("propertyTypeDescription"),
         property_type_code=record.get("propertyTypeCD"),
