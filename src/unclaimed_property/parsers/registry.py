@@ -21,6 +21,15 @@ from src.unclaimed_property.parsers.idaho import parse_response as parse_idaho_r
 from src.unclaimed_property.parsers.indiana import parse_response as parse_indiana_response
 from src.unclaimed_property.parsers.illinois import parse_response as parse_illinois_response
 from src.unclaimed_property.parsers.georgia import parse_response as parse_georgia_response
+from src.unclaimed_property.parsers.kansas import parse_response as parse_kansas_response
+from src.unclaimed_property.parsers.louisiana import parse_response as parse_louisiana_response
+from src.unclaimed_property.parsers.maine import parse_response as parse_maine_response
+from src.unclaimed_property.parsers.maryland import parse_response as parse_maryland_response
+from src.unclaimed_property.parsers.massachusetts import parse_response as parse_massachusetts_response
+from src.unclaimed_property.parsers.michigan import parse_response as parse_michigan_response
+from src.unclaimed_property.parsers.minnesota import parse_response as parse_minnesota_response
+from src.unclaimed_property.parsers.mississippi import parse_response as parse_mississippi_response
+from src.unclaimed_property.parsers.montana import parse_response as parse_montana_response
 
 
 ParserFunction = Callable[[dict[str, Any]], list[PropertyRecord]]

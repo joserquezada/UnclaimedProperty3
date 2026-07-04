@@ -3,25 +3,25 @@ from typing import Any
 from src.unclaimed_property.models.property_record import PropertyRecord
 
 
-def parse_property(record):
-    owner = record.get("ownerName", "")
-    second = (record.get("secondOwnerName") or "").strip()
+def parse_property(record: dict[str, Any]) -> PropertyRecord:
+    owner_name = record.get("ownerName", "")
+    second_owner = (record.get("secondOwnerName") or "").strip()
 
-    if second:
-        owner = f"{owner} / {second}"
+    if second_owner:
+        owner_name = f"{owner_name} / {second_owner}"
 
     return PropertyRecord(
-        source_state="MO",
+        source_state="MT",
         property_id=record.get("propertyID"),
-        owner_name=owner,
+        owner_name=owner_name,
         holder_name=record.get("holderName"),
         address=record.get("address1"),
         city=record.get("city"),
-        state=record.get("state") or "MO",
+        state=record.get("state") or "MT",
         postal_code=record.get("postalCode"),
         property_type=record.get("propertyTypeDescription"),
         property_type_code=record.get("propertyTypeCD"),
-        property_value=record.get("propertyValue"),
+        property_value=None,
         report_year=record.get("reportYear"),
         uuid=record.get("uuid"),
     )
