@@ -42,6 +42,11 @@ from src.unclaimed_property.parsers.rhode_island import parse_response as parse_
 from src.unclaimed_property.parsers.south_carolina import parse_response as parse_south_carolina_response
 from src.unclaimed_property.parsers.south_dakota import parse_response as parse_south_dakota_response
 from src.unclaimed_property.parsers.tennessee import parse_response as parse_tennessee_response
+from src.unclaimed_property.parsers.utah import parse_response as parse_utah_response
+from src.unclaimed_property.parsers.virginia import parse_response as parse_virginia_response
+from src.unclaimed_property.parsers.washington import parse_response as parse_washington_response
+from src.unclaimed_property.parsers.west_virginia import parse_response as parse_west_virginia_response
+from src.unclaimed_property.parsers.wyoming import parse_response as parse_wyoming_response
 
 
 
