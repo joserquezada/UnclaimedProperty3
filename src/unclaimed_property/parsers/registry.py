@@ -29,7 +29,7 @@ from src.unclaimed_property.parsers.massachusetts import parse_response as parse
 from src.unclaimed_property.parsers.michigan import parse_response as parse_michigan_response
 from src.unclaimed_property.parsers.minnesota import parse_response as parse_minnesota_response
 from src.unclaimed_property.parsers.mississippi import parse_response as parse_mississippi_response
-from src.unclaimed_property.parsers.montana import parse_response as parse_montana_response
+
 
 
 ParserFunction = Callable[[dict[str, Any]], list[PropertyRecord]]
