@@ -40,10 +40,9 @@ class DuckDBRepository:
                 """
             )
 
-    def save_properties(self, records: list[PropertyRecord]) -> None:
+    def save_properties(self, records: list[PropertyRecord]) -> int:
         if not records:
-            print("No records to save.")
-            return
+            return 0
 
         inserted_count = 0
 
@@ -113,7 +112,7 @@ class DuckDBRepository:
                     )
                     inserted_count += 1
 
-        print(f"Inserted {inserted_count} new records into DuckDB.")
+        return inserted_count
 
     def count_properties(self) -> int:
         with duckdb.connect(str(self.database_path)) as conn:
