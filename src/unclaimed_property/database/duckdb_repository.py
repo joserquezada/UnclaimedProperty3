@@ -165,3 +165,39 @@ class DuckDBRepository:
                 """,
                 [pattern],
             ).fetchall()
+
+    def count_by_state(self):
+        with duckdb.connect(str(self.database_path)) as conn:
+            return conn.execute(
+                """
+                SELECT
+                    source_state,
+                    COUNT(*) AS record_count
+                FROM properties
+                GROUP BY source_state
+                ORDER BY source_state
+                """
+            ).fetchall()
+    
+    def value_summary_by_state(self):
+        with duckdb.connect(str(self.database_path)) as conn:
+            return conn.execute(
+                """
+                SELECT
+                    source_state,
+                    COUNT(*) AS record_count,
+                    COUNT(*) FILTER (WHERE property_value IS NOT NULL) AS exact_value_count,
+                    COUNT(*) FILTER (
+                        WHERE property_value IS NULL
+                        AND property_value_description IS NOT NULL
+                    ) AS described_value_count,
+                    COUNT(*) FILTER (
+                        WHERE property_value IS NULL
+                        AND property_value_description IS NULL
+                    ) AS unknown_value_count,
+                    COALESCE(SUM(property_value), 0) AS exact_value_total
+                FROM properties
+                GROUP BY source_state
+                ORDER BY source_state
+                """
+            ).fetchall()

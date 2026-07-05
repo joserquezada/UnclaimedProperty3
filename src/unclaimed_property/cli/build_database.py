@@ -73,6 +73,35 @@ def main() -> None:
     print(f"Records parsed: {total_parsed}")
     print(f"Records inserted: {total_inserted}")
     print(f"Database total: {repo.count_properties()}")
+    print()
+    print("=" * 50)
+    print("Records by State")
+    print("=" * 50)
+
+    for state, count in repo.count_by_state():
+        print(f"{state}: {count}")
+
+    print()
+    print("=" * 50)
+    print("Value Summary by State")
+    print("=" * 50)
+
+    for (
+        state,
+        record_count,
+        exact_count,
+        described_count,
+        unknown_count,
+        exact_total,
+    ) in repo.value_summary_by_state():
+        print(
+            f"{state}: "
+            f"{record_count} records | "
+            f"{exact_count} exact | "
+            f"{described_count} described | "
+            f"{unknown_count} unknown | "
+            f"${exact_total:,.2f}"
+        )
 
 
 if __name__ == "__main__":
